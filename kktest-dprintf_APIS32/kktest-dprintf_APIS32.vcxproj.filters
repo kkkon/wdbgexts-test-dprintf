@@ -26,5 +26,8 @@
     <ClCompile Include="kktest-dprintf_APIS32.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="dprintf_APIS32-workaround.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

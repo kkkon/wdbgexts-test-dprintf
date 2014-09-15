@@ -25,6 +25,10 @@ WinDbgExtensionDllInit(
 	SavedMajorVersion = MajorVersion;
 	SavedMinorVersion = MinorVersion;
 
+#if defined(WORKAROUND__DPRINTF_LY)
+	initDebugEngine();
+#endif
+
 	return;
 }
 
@@ -58,7 +62,11 @@ DECLARE_API ( kktest )
 		size_t index = 0;
 		for ( index = 0; index < count; ++index )
 		{
+#if defined(WORKAROUND__DPRINTF_LY)
+			execute_dprintf_sourceline( stackFrames[index].ProgramCounter );
+#else // defined(WORKAROUND__DPRINTF_LY)
 			dprintf( "	%ly\n", stackFrames[index].ProgramCounter );
+#endif // defined(WORKAROUND__DPRINTF_LY)
 		}
 	}
 
